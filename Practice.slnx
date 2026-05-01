@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Calculator/Calculator.csproj" />
+  <Project Path="Casino/Casino.csproj" />
+  <Project Path="OrderManager/OrderManager.csproj" />
+</Solution>
