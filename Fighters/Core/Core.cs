@@ -31,7 +31,6 @@ public class Core
             MenuOptionResult result = MainMenuHandleOption( option );
             if ( result == MenuOptionResult.InvalidInput )
             {
-                //Console.WriteLine();
                 Console.WriteLine( "Неверная опция" );
             }
         }
