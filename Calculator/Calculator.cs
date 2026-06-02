@@ -9,7 +9,11 @@ public class Calculator
     private const string _multiplySymbol = "*";
     private const string _divideSymbol = "/";
 
-    public bool TryParseInput( string[] arr, out int firstOperand, out MathAction action, out int secondOperand )
+    public bool TryParseInput(
+        string[] arr,
+        out int firstOperand,
+        out MathAction action,
+        out int secondOperand )
     {
         firstOperand = 0;
         action = Enums.MathAction.InvalidAction;

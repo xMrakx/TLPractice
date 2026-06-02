@@ -72,6 +72,7 @@ public class Program
     private static OrderHandleResult Exit()
     {
         _isWorking = false;
+
         return OrderHandleResult.Exit;
     }
 

@@ -4,5 +4,5 @@ public enum OrderAcceptOption
 {
     InvalidOption = 0,
     Accept = 1,
-    Decline = 2,
+    Decline = 2
 }

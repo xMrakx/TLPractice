@@ -20,7 +20,7 @@ public class OrderManager
     {
         Console.WriteLine( "Введите название товара" );
         _productName = Console.ReadLine();
-        if ( string.IsNullOrEmpty( _productName ) )
+        if ( String.IsNullOrEmpty( _productName ) )
         {
             return false;
         }
@@ -38,7 +38,7 @@ public class OrderManager
 
         Console.WriteLine( "Введите ваше имя" );
         _userName = Console.ReadLine();
-        if ( string.IsNullOrEmpty( _userName ) )
+        if ( String.IsNullOrEmpty( _userName ) )
         {
             return false;
         }
@@ -47,7 +47,7 @@ public class OrderManager
 
         Console.WriteLine( "Введите адрес" );
         _address = Console.ReadLine();
-        if ( string.IsNullOrEmpty( _address ) )
+        if ( String.IsNullOrEmpty( _address ) )
         {
             return false;
         }
