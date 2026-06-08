@@ -41,10 +41,12 @@ public class Knight : IFighter
     public int CalculateInitiative()
     {
         int initiative = _race.Initiative + _armor.InitiativeModifier + _weapon.InitiativeModifier;
+
         if ( initiative <= 0 )
         {
             return 1;
         }
+
         return initiative;
     }
 

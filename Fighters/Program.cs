@@ -1,12 +1,12 @@
-﻿using Fighters.Core;
+﻿using Fighters.FighterManager;
 
 namespace Fighters;
 
 public class Program
 {
-    private static Fighters.Core.Core _core = new();
+    private static Fighters.FighterManager.FighterManager _fighterManager = new();
     public static void Main(string[] args)
     {
-        _core.Start();
+        _fighterManager.Start();
     }
 }

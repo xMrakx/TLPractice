@@ -44,10 +44,12 @@ public class Barbarian : IFighter
             + _classInitiative
             + _armor.InitiativeModifier 
             + _weapon.InitiativeModifier;
+
         if ( initiative <= 0 )
         {
             return 1;
         }
+
         return initiative;
     }
 

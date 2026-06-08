@@ -14,7 +14,6 @@ public class Assasin : IFighter
     private int _classArmor = 0;
     private int _classInitiative = 3;
 
-
     private int _currentHealth;
 
     public string Name { get; private set; }
@@ -46,10 +45,12 @@ public class Assasin : IFighter
              + _classInitiative
              + _armor.InitiativeModifier
              + _weapon.InitiativeModifier;
+
         if ( initiative <= 0 )
         {
             return 1;
         }
+
         return initiative;
     }
 
