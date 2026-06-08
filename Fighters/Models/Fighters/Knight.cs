@@ -12,7 +12,8 @@ public class Knight : IFighter
     private int _classHealth = 50;
     private int _classDamage = 2;
     private int _classArmor = 1;
-    
+    private int _classInitiative = 0;
+
 
     private int _currentHealth;
 
@@ -40,7 +41,11 @@ public class Knight : IFighter
 
     public int CalculateInitiative()
     {
-        int initiative = _race.Initiative + _armor.InitiativeModifier + _weapon.InitiativeModifier;
+        int initiative =
+            _race.Initiative
+            + _classInitiative
+            + _armor.InitiativeModifier
+            + _weapon.InitiativeModifier;
 
         if ( initiative <= 0 )
         {
