@@ -15,7 +15,7 @@ public static class RaceFactory
                 return new Elf();
             case RaceType.Dwarf:
                 return new Dwarf();
-            case RaceType.Orc: 
+            case RaceType.Orc:
                 return new Orc();
             default:
                 throw new ArgumentException( $"Неизвестный вид рассы {type}" );

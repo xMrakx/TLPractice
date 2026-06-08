@@ -13,11 +13,11 @@ public static class WeaponFactory
                 return new Fists();
             case WeaponType.Spear:
                 return new Spear();
-            case WeaponType.Sword: 
+            case WeaponType.Sword:
                 return new Sword();
             case WeaponType.Longsword:
                 return new Longsword();
-            case WeaponType.Hammer: 
+            case WeaponType.Hammer:
                 return new Hammer();
             default:
                 throw new ArgumentException( $"Неизвестный тип оружия: {type}" );
