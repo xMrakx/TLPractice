@@ -72,20 +72,20 @@ public class FighterManager
 
         _arena.AddFighter( fighter );
 
-        return MenuOptionResult.Succses;
+        return MenuOptionResult.Succsess;
     }
 
     private MenuOptionResult StartFight()
     {
         _arena.StartFight();
 
-        return MenuOptionResult.Succses;
+        return MenuOptionResult.Succsess;
     }
 
     private MenuOptionResult Stop()
     {
         _isWorking = false;
 
-        return MenuOptionResult.Succses;
+        return MenuOptionResult.Succsess;
     }
 }
