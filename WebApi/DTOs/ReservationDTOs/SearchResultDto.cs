@@ -7,4 +7,3 @@ public record SearchResultDto(
     PropertyResponseDto Property,
     RoomTypeResponseDto RoomType
 );
-

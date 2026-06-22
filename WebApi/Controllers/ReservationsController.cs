@@ -2,7 +2,10 @@
 using Domain.Entities;
 using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Validation;
+using WebApi.DTOs.PropertyDTOs;
 using WebApi.DTOs.ReservationDTOs;
+using WebApi.DTOs.RoomTypeDTOs;
 
 namespace WebApi.Controllers;
 
@@ -15,6 +18,53 @@ public class ReservationsController : ControllerBase
     public ReservationsController( IReservationService reservationService )
     {
         _reservationService = reservationService;
+    }
+
+    [HttpGet( "variants" )]
+    public async Task<IActionResult> SearchVariants( [FromQuery] VariantsRequestDto requestDto )
+    {
+        VariantsFilter filter = new(
+            requestDto.Country,
+            requestDto.City,
+            requestDto.ArrivalDate,
+            requestDto.DepartureDate,
+            requestDto.GuestCount,
+            requestDto.MaxPrice
+        );
+
+        try
+        {
+            IEnumerable<SearchResult> variants = await _reservationService.GetAvaliableVariants( filter );
+
+            IEnumerable<SearchResultDto> dtos = variants.Select( v => new SearchResultDto(
+                new PropertyResponseDto(
+                    v.Property.Id,
+                    v.Property.Name,
+                    v.Property.Country,
+                    v.Property.City,
+                    v.Property.Address,
+                    v.Property.Latitude,
+                    v.Property.Longitude
+                ),
+                new RoomTypeResponseDto(
+                    v.RoomType.Id,
+                    v.RoomType.PropertyId,
+                    v.RoomType.Name,
+                    v.RoomType.DailyPrice,
+                    v.RoomType.Currency,
+                    v.RoomType.MinPersonCount,
+                    v.RoomType.MaxPersonCount,
+                    v.RoomType.Services,
+                    v.RoomType.Amenities
+                )
+             ) );
+
+            return Ok( dtos );
+        }
+        catch ( ArgumentException ex )
+        {
+            return BadRequest( new { error = ex.Message } );
+        }
     }
 
     [HttpGet]
