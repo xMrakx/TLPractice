@@ -12,7 +12,12 @@ namespace Fighters.FighterManager;
 public class FighterManager
 {
     private bool _isWorking;
-    private Arena _arena = new();
+    private Arena _arena;
+
+    public FighterManager()
+    {
+        _arena = new Arena();
+    }
 
     public void Start()
     {

@@ -54,7 +54,13 @@ public class Arena
         {
             if ( i + 1 < shuffledFighters.Count )
             {
-                _fightersPairs.Add( new FightersPair() { Fighter1 = shuffledFighters[ i ], Fighter2 = shuffledFighters[ i + 1 ] } );
+                _fightersPairs.Add(
+                    new FightersPair()
+                    {
+                        Fighter1 = shuffledFighters[ i ],
+                        Fighter2 = shuffledFighters[ i + 1 ]
+                    }
+                );
             }
             else
             {
@@ -65,14 +71,24 @@ public class Arena
 
     private List<IFighter> GetShuffledFighterList()
     {
-        Random random = new Random();
-        return Fighters.OrderBy( f => random.Next() ).ToList();
+        List<IFighter> list = Fighters.ToList();
+        Random random = Random.Shared;
+
+        for ( int i = list.Count - 1; i > 0; i-- )
+        {
+            int j = random.Next( i + 1 );
+            IFighter temp = list[ i ];
+            list[ i ] = list[ j ];
+            list[ j ] = temp;
+        }
+
+        return list;
     }
 
     private void DisplayPairs()
     {
         Console.WriteLine( "Паринги" );
-        foreach ( var pair in _fightersPairs )
+        foreach ( FightersPair pair in _fightersPairs )
         {
             Console.WriteLine(
                 $"{pair.Fighter1.GetClassName()} {pair.Fighter1.Name} " +
@@ -137,9 +153,12 @@ public class Arena
 
     private void Strike( IFighter fighter, IFighter target )
     {
-        Random random = new Random();
+        const float missValue = -0.19f;
+        const float criticalValue = 0.09f;
+
+        Random random = Random.Shared;
         float atackModifier = ( float )random.Next( -20, 11 ) / 100;
-        if ( atackModifier <= -0.19f )
+        if ( atackModifier <= missValue )
         {
             Console.WriteLine(
                 $"{fighter.GetClassName()} {fighter.Name} " +
@@ -149,7 +168,7 @@ public class Arena
         }
 
         int damage = fighter.CalculateDamage();
-        if ( atackModifier >= 0.09f )
+        if ( atackModifier >= criticalValue )
         {
             damage *= 2;
         }

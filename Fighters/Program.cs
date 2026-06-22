@@ -1,12 +1,19 @@
-﻿using Fighters.FighterManager;
+﻿using FM = Fighters.FighterManager.FighterManager;
 
 namespace Fighters;
 
 public class Program
 {
-    private static Fighters.FighterManager.FighterManager _fighterManager = new();
-    public static void Main( string[] args )
+    private FM _fighterManager;
+
+    public Program()
     {
-        _fighterManager.Start();
+        _fighterManager = new FM();
+    }
+
+    public static void Main()
+    {
+        Program program = new Program();
+        program._fighterManager.Start();
     }
 }
