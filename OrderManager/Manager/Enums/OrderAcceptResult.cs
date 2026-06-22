@@ -2,7 +2,7 @@
 
 public enum OrderAcceptResult
 {
-    Accept = 0,
-    Decline = 1,
-    InvalidOption = 2
+    InvalidOption = 0,
+    Accept = 1,
+    Decline = 2
 }

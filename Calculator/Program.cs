@@ -11,7 +11,7 @@ public class Program
         "2 Выход"
     ];
 
-    public static void Main( string[] args )
+    public static void Main()
     {
         while ( _isWorking )
         {
@@ -25,7 +25,7 @@ public class Program
             }
         }
     }
-    
+
     private static void PrintMenu()
     {
         foreach ( string option in _menuOptions )
@@ -82,9 +82,8 @@ public class Program
             return OptionalHandleResult.InvalidInput;
         }
 
-        Console.WriteLine( $"Результат: {result}" );
-        Console.WriteLine();
-
+        Console.WriteLine( $"Результат: {result}\n" );
+        
         return OptionalHandleResult.Success;
     }
 
@@ -118,5 +117,5 @@ public class Program
             default:
                 return "Критическая ошибка";
         }
-    }  
+    }
 }

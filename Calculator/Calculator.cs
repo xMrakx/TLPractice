@@ -84,6 +84,7 @@ public class Calculator
         {
             return true;
         }
+
         return false;
     }
 
@@ -109,7 +110,6 @@ public class Calculator
                         result = firstOperand / secondOperand;
                         return true;
                     default:
-                        result = 0;
                         return false;
                 }
             }

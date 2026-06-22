@@ -1,4 +1,5 @@
 ﻿using OrderManager.Enums;
+using OM = OrderManager.Manager.OrderManager;
 
 namespace OrderManager;
 
@@ -36,7 +37,7 @@ public class Program
     {
         if ( !Enum.TryParse(option, out MenuOption menuOption) )
         {
-            return OrderHandleResult.InvalidOtion;
+            return OrderHandleResult.InvalidOption;
         }
 
         switch ( menuOption )
@@ -46,17 +47,17 @@ public class Program
             case MenuOption.Exit:
                 return Exit();
             default:
-                return OrderHandleResult.InvalidOtion;
+                return OrderHandleResult.InvalidOption;
         }
     }
 
     private static OrderHandleResult CreateOrder()
     {
-        Manager.OrderManager orderManager = new Manager.OrderManager();
+        OM orderManager = new();
 
         if ( !orderManager.TryRequestOrderDataFromUser() )
         {
-            return OrderHandleResult.InvalidOtion;
+            return OrderHandleResult.InvalidOption;
         }
 
         Console.WriteLine();
@@ -82,7 +83,7 @@ public class Program
         {
             case OrderHandleResult.Success:
                 return "Заказ создан";
-            case OrderHandleResult.InvalidOtion:
+            case OrderHandleResult.InvalidOption:
                 return "Неверная команда";
             case OrderHandleResult.InvalidInput:
                 return "Неверные данные";
@@ -95,7 +96,3 @@ public class Program
         }
     }
 }
-
-
-
-
