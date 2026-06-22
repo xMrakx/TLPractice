@@ -3,6 +3,6 @@
 public enum MainMenuOption
 {
     AddNewConfig = 1,
-    ShowCurrentComfig = 2,
+    ShowCurrentConfig = 2,
     Exit = 3
 }

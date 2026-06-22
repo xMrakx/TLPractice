@@ -9,7 +9,7 @@ namespace CarFactory.CarFactoryManager;
 public class CarFactoryManager
 {
     private bool _isWorking = false;
-    private Car _currentCar = null;
+    private Car? _currentCar;
 
     public void Start()
     {
@@ -50,7 +50,7 @@ public class CarFactoryManager
         return menuOption switch
         {
             MainMenuOption.AddNewConfig => AddNewConfig(),
-            MainMenuOption.ShowCurrentComfig => ShowCurrentConfig(),
+            MainMenuOption.ShowCurrentConfig => ShowCurrentConfig(),
             MainMenuOption.Exit => Stop(),
             _ => MenuOptionResult.InvalidInput
         };
@@ -65,7 +65,7 @@ public class CarFactoryManager
         Console.WriteLine( "Новая конфигурация" );
         ShowCurrentConfig();
 
-        return MenuOptionResult.Succsess;
+        return MenuOptionResult.Success;
     }
 
     private MenuOptionResult ShowCurrentConfig()
@@ -74,33 +74,18 @@ public class CarFactoryManager
         {
             Console.WriteLine( "Отсутсвует конфигурация машины" );
 
-            return MenuOptionResult.Succsess;
+            return MenuOptionResult.Success;
         }
+        
+        _currentCar.Print();
 
-        string name = _currentCar.Name;
-        string carBodyColor = CarColorExtensions.ColorToString( _currentCar.GetCarColor() );
-        string carBody = _currentCar.GetCarBody().TypeName;
-        string engine = _currentCar.GetEngine().TypeName;
-        string stWheelType = SteeringWheelTypeExtensions.SteeringWheelTypeToString( _currentCar.GetSteeringWheelType() );
-        string transmission = _currentCar.GetTransmission().TypeName;
-        int gearCount = _currentCar.GetTransmission().GearCount;
-        int maxSpeed = _currentCar.CalculateMaxSpeed();
-
-        Console.WriteLine( $"Модель: {name}" );
-        Console.WriteLine( $"Корпус: {carBodyColor} {carBody}" );
-        Console.WriteLine( $"Двигатель: {engine}" );
-        Console.WriteLine( $"Рулевое колесо: {stWheelType}" );
-        Console.WriteLine( $"Коробка передач: {transmission}, количество передач: {gearCount}" );
-        Console.WriteLine( $"Максимальная скорость: {maxSpeed}" );
-        Console.WriteLine();
-
-        return MenuOptionResult.Succsess;
+        return MenuOptionResult.Success;
     }
 
     private MenuOptionResult Stop()
     {
         _isWorking = false;
 
-        return MenuOptionResult.Succsess;
+        return MenuOptionResult.Success;
     }
 }

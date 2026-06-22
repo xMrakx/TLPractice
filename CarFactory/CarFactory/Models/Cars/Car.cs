@@ -40,4 +40,14 @@ public class Car
     public ITransmission GetTransmission() => _transmission;
     public int CalculateMaxSpeed() => _engine.Power * _transmission.GearCount - _carBody.SpeedModifier;
 
+    public void Print()
+    {
+        Console.WriteLine( $"Название: {Name}" );
+        Console.WriteLine( $"Тип корпуса: {_carBody.GetType().Name}" );
+        Console.WriteLine( $"Цвет: {_color}" );
+        Console.WriteLine( $"Тип двигателя: {_engine.GetType().Name}" );
+        Console.WriteLine( $"Расположение руля: {_steeringWheelType}" );
+        Console.WriteLine( $"Тип коробки передач: {_transmission.GetType().Name}" );
+        Console.WriteLine( $"Макс. скорость: {CalculateMaxSpeed()}\n" );
+    }
 }

@@ -50,7 +50,7 @@ public static class CarBuilder
         IEngine engine = EngineFactory.Create( engineType );
         ITransmission transmission = TransmissionFactory.Create( transmissionType );
 
-        Car car = new(
+        return new Car(
             name,
             carBody,
             carColor,
@@ -58,10 +58,7 @@ public static class CarBuilder
             steeringWheelType,
             transmission
         );
-
-        return car;
     }
-
 
     private static string GetValidName()
     {

@@ -3,5 +3,5 @@
 public enum MenuOptionResult
 {
     InvalidInput = 0,
-    Succsess = 1
+    Success = 1
 }
