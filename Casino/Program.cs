@@ -14,16 +14,25 @@ public class Program
         "4. Выйти"
     ];
 
-    private static CasinoManager _manager = new();
+    private readonly CasinoManager _manager;
 
-    public static void Main( string[] args )
+    public Program()
+    {
+        _manager = new CasinoManager();
+    }
+
+    public static void Main()
+    {
+        Program program = new Program();
+        program.Run();
+    }
+
+    private void Run()
     {
         PrintHeader();
-
         while ( _isWorking )
         {
             PrintMenu();
-
             string option = Console.ReadLine();
             OptionHandleResult result = HandleOption( option );
             string handledResult = HandleResult( result );
